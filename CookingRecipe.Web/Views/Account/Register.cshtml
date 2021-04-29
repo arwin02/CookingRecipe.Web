@@ -1,0 +1,85 @@
+﻿@model CookingRecipe.Web.ViewModels.Account.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4 bg-dark shadow-lg p-3">
+            <form method="post" action="~/account/register">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="FirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" name="FirstName" placeholder="Enter a first name" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" name="LastName" placeholder="Enter a last name" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="SurName" class="form-label">Surname</label>
+                    <input type="text" class="form-control" name="SurName" placeholder="Enter a surname" />
+                </div>
+
+                <div class="form-group">
+                    <label for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" name="PhoneNumber" placeholder="Enter a phone number" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Address" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="Address" placeholder="Enter a address" />
+                </div>
+
+                <div class="form-group">
+                    <label for="EmailAddress" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" name="EmailAddress" placeholder="Enter a email address" />
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="Password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="Password" placeholder="Enter a password" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Enter a confirm password" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <select id="gender" class="form-control" name="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <br />
+                <div class="text-center mb-4">
+                    <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+                    <a href="~/home" class="btn btn-lg btn-danger">Cancel</a>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</div>
+
+<script>
+    $('select[name= "Gender"]').find(":selected").val();
+    $('select[name= "Gender"] option:selected').val();
+</script>

@@ -1,0 +1,52 @@
+﻿@using CookingRecipe.Web.Infrastructures.Domain.Helpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CookingRecipe.Web</title>
+    <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Fontawesome/css/all.min.css" />
+</head>
+<body>
+
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="~/manage/cookings/index" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img class="bi me-2" width="110" height="30" src="~/Images/logo/CookingRecipeLogo.png" />
+            </a>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+
+                <li><a href="~/manage/cookings/index" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="~/manage/cookings/index" class="nav-link px-2 link-dark">Cook</a></li>
+                <li><a href="~/manage/ingredients/index" class="nav-link px-2 link-dark">Ingredient</a></li>
+                <li><a href="~/manage/instructions/index" class="nav-link px-2 link-dark">Instruction</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <a href="~/manage/users/logout/@WebUser.UserId">
+                    <button type="button" class="btn btn-outline-primary me-2">Logout</button>
+                </a>
+
+            </div>
+        </header>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CookingRecipe.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/Jquery/jquery-3.6.0.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Fontawesome/js/all.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Cookings.CreateViewModel
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+
+<h1>Create</h1>
+
+
+<form method="post" action="~/manage/cookings/create">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" name="Name" placeholder="input a title" />
+    </div>
+    <hr class="h-75" />
+    <button type="submit" value="Create" class="btn btn-success">Submit</button>
+    <a href="~/manage/cookings/index" type="button" class="btn btn-secondary">Cancel</a>
+
+</form>

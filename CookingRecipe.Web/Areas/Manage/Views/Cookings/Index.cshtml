@@ -1,0 +1,231 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Cookings.IndexViewModel
+@using CookingRecipe.Web.Infrastructures.Domain.Models
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+
+<h2>Index</h2>
+
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="input-group mb-3">
+            <input type="text" id="searchKeyword" placeholder="search cooking" class="form-control" aria-label="search groups" aria-describedby="basic-addon2" value="@Model.Cookings.Keyword">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><a href="#" onclick="searchTrigger()"><i class="fas fa-search" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="table-responsive table--no-card m-b-30">
+            <a href="~/manage/cookings/create" class="btn btn-lg btn-info btn-block"> <i class="fa fa-plus"></i>&nbsp; Create Cooking</a>
+
+        </div>
+    </div>
+</div>
+
+
+
+@if (Model.Cookings.Items.Count > 0)
+{
+    <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Cooking cooking in Model.Cookings.Items.OrderByDescending(c => c.CreatedAt))
+                {
+
+                    <tr>
+
+                        <th>@cooking.Id</th>
+                        <td>@cooking.Name</td>
+
+                        <td>
+                            <a href="#" onclick="createIngredients('@cooking.Id','@cooking.Name')" title="Create Ingredient"><button type="button" class="btn"><i class="fas fa-scroll"></i></button></a>
+                            <a href="#" onclick="createInstructions('@cooking.Id','@cooking.Name')" title="Create Instruction"><button type="button" class="btn"><i class="fas fa-sticky-note"></i></button></a>
+
+                            <a href="~/manage/cookings/details/@cooking.Id" title="Details Cooking"><button type="button" class="btn"><i class="fas fa-info"></i></button></a>
+                            <a href="~/manage/cookings/edit/@cooking.Id" title="Update Cooking"><button type="button" class="btn"><i class="fas fa-pen-square"></i></button></a>
+                            <a href="#" onclick="confirmDeleteCooking('@cooking.Id', '@cooking.Name')" title="Delete Cooking"><button type="button" class="btn"><i class="fas fa-times"></i></button></a>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><span class="form-control-plaintext">Page&nbsp;&nbsp;&nbsp;</span></li>
+                            <li class="page-item"><input type="number" value="@Model.Cookings.PageIndex" class="form-control" style="width:50px;" onKeydown="javascript: if(event.keyCode == 13 && isNaN(parseInt($(this).val()))==false) window.location='/manage/cookings/index?pageIndex=' + (isNaN(parseInt($(this).val())) ? 1 : parseInt($(this).val()));" /></li>
+                            <li class="page-item"><span class="form-control-plaintext">&nbsp;&nbsp;&nbsp;of @Model.Cookings.PageCount&nbsp;&nbsp;&nbsp;</span></li>
+                            @{
+                                var prev = Model.Cookings.PageIndex - 1;
+                                if (prev > 0)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/cookings/index?keyword=@Model.Cookings.Keyword&pageSize=@Model.Cookings.PageSize&pageIndex=@prev"><span aria-hidden="true">&laquo;</span></a></li>
+                                }
+                            }
+                            <li class="page-item"><a class="page-link" href="#">@(Model.Cookings.PageIndex)</a></li>
+                            @{
+                                var next = Model.Cookings.PageIndex + 1;
+                                if (next <= Model.Cookings.PageCount)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/cookings/index?keyword=@Model.Cookings.Keyword&pageSize=@Model.Cookings.PageSize&pageIndex=@next"><span aria-hidden="true">&raquo;</span></a></li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <p>0 search results.</p>
+}
+
+
+
+
+
+
+<!--Modal Add Ingredient-->
+<div class="modal" tabindex="-1" role="dialog" id="modal-create-ingredient">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Ingredient List of <span id="modal-create-cooking-name"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <form method="post" action="~/manage/ingredients/create">
+                <div class="modal-body">
+
+                    <input type="hidden" name="CookingId" id="modal-cooking-ingredient-id" />
+
+                    <div class="form-group">
+                        <label for="Name" class="control-label">Name</label>
+                        <input type="text" class="form-control" name="Name" placeholder="Enter a ingredient name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Quantity" class="control-label">Quantity</label>
+                        <input type="text" class="form-control" name="Quantity" placeholder="Enter a quantity" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="UnitCost" class="control-label">Unit Cost</label>
+                        <input type="text" class="form-control" name="UnitCost" placeholder="Enter a unit cost" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Create Ingredient</button>
+                    <button type="button" id="modal-close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--Modal Add Instruction-->
+<div class="modal" tabindex="-1" role="dialog" id="modal-create-instruction">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Instruction of <span id="modal-create-cooking-name"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <form method="post" action="~/manage/instructions/create">
+                <div class="modal-body">
+
+                    <input type="hidden" name="CookingId" id="modal-cooking-instruction-id" />
+
+                    <div class="form-group">
+                        <label for="Step" class="control-label">Step</label>
+                        <input type="text" class="form-control" name="Step" placeholder="Enter a per step" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Time" class="control-label">Time Cook</label>
+                        <input type="datetime-local" class="form-control" name="Time" placeholder="Enter a time cook" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Create Instruction</button>
+                    <button type="button" id="modal-close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Modal Delete-->
+<div class="modal" tabindex="-1" role="dialog" id="modal-delete-cooking">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Cooking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <span id="modal-delete-cooking-name"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modal-delete-cooking-confirm"><button type="button" class="btn btn-primary">Delete Cooking</button></a>
+                <button type="button" id="modal-close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    function createIngredients(cookingId, name) {
+        $("#modal-create-cooking-name").html(name);
+        $("#modal-cooking-ingredient-id").val(cookingId);
+        $("#modal-create-ingredient").modal("show");
+    }
+
+    function createInstructions(cookingId, name) {
+        $("#modal-create-instruction-cooking-name").html(name);
+        $("#modal-cooking-instruction-id").val(cookingId);
+        $("#modal-create-instruction").modal("show");
+    }
+
+    function confirmDeleteCooking(cookingId, name) {
+        $("#modal-delete-cooking-name").html(name);
+        $("#modal-delete-cooking-confirm").attr("href", "/manage/cookings/delete/" + cookingId);
+        $("#modal-delete-cooking").modal("show");
+
+    }
+
+    $("#searchKeyword").keyup(function (event) {
+        if (event.keyCode === 13) {
+            searchTrigger();
+        }
+    });
+
+    function searchTrigger() {
+        window.location = "/manage/cookings/index?pageIndex=1&keyword=" + $("#searchKeyword").val();
+    }
+</script>

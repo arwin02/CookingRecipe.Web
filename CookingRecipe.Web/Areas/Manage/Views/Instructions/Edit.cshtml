@@ -1,0 +1,23 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Instructions.EditViewModel
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<form method="post" action="~/manage/instructions/edit">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label class="form-label">Step</label>
+        <input type="text" class="form-control" name="Step" value="@Model.Step" placeholder="input a step" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Quantity</label>
+        <input type="datetime" class="form-control" name="Time" value="@Model.Time" placeholder="input a time" />
+    </div>
+    <div class="form-group">
+        <button type="submit" value="Edit" class="btn btn-success">Save</button>
+        <a href="~/manage/instructions/index" class="btn btn-danger">Cancel</a>
+    </div>
+</form>

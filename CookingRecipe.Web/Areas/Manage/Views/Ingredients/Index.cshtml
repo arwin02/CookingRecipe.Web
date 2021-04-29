@@ -1,0 +1,139 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Ingredients.IndexViewModel
+@using CookingRecipe.Web.Infrastructures.Domain.Models
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+
+}
+
+<h1>Index</h1>
+
+
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="input-group mb-3">
+            <input type="text" id="searchKeyword" placeholder="search ingredient" class="form-control" aria-label="search groups" aria-describedby="basic-addon2" value="@Model.Ingredients.Keyword">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><a href="#" onclick="searchTrigger()"><i class="fas fa-search" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-lg-3">
+            <div class="table-responsive table--no-card m-b-30">
+                <a href="~/manage/ingredients/create" class="btn btn-lg btn-info btn-block"> <i class="fa fa-plus"></i>&nbsp; Create Ingredient</a>
+
+            </div>
+        </div>*@
+</div>
+
+
+
+@if (Model.Ingredients.Items.Count > 0)
+{
+    <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Unit Cost</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Ingredient ingredient in Model.Ingredients.Items)
+                {
+
+                    <tr>
+                        <td>@ingredient.Name</td>
+                        <td>@ingredient.Quantity</td>
+                        <td>@ingredient.UnitCost</td>
+
+                        <td>
+                            <a href="~/manage/ingredients/details/@ingredient.Id" title="Details Ingredient"><button type="button" class="btn"><i class="fas fa-info"></i></button></a>
+                            <a href="~/manage/ingredients/edit/@ingredient.Id" title="Update Ingredient"><button type="button" class="btn"><i class="fas fa-pen-square"></i></button></a>
+                            <a href="#" onclick="confirmDeleteIngredient('@ingredient.Id', '@ingredient.Name')" title="Delete Ingredient"><button type="button" class="btn"><i class="fas fa-times"></i></button></a>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><span class="form-control-plaintext">Page&nbsp;&nbsp;&nbsp;</span></li>
+                            <li class="page-item"><input type="number" value="@Model.Ingredients.PageIndex" class="form-control" style="width:50px;" onKeydown="javascript: if(event.keyCode == 13 && isNaN(parseInt($(this).val()))==false) window.location='/manage/ingredients/index?pageIndex=' + (isNaN(parseInt($(this).val())) ? 1 : parseInt($(this).val()));" /></li>
+                            <li class="page-item"><span class="form-control-plaintext">&nbsp;&nbsp;&nbsp;of @Model.Ingredients.PageCount&nbsp;&nbsp;&nbsp;</span></li>
+                            @{
+                                var prev = Model.Ingredients.PageIndex - 1;
+                                if (prev > 0)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/ingredients/index?keyword=@Model.Ingredients.Keyword&pageSize=@Model.Ingredients.PageSize&pageIndex=@prev"><span aria-hidden="true">&laquo;</span></a></li>
+                                }
+                            }
+                            <li class="page-item"><a class="page-link" href="#">@(Model.Ingredients.PageIndex)</a></li>
+                            @{
+                                var next = Model.Ingredients.PageIndex + 1;
+                                if (next <= Model.Ingredients.PageCount)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/ingredients/index?keyword=@Model.Ingredients.Keyword&pageSize=@Model.Ingredients.PageSize&pageIndex=@next"><span aria-hidden="true">&raquo;</span></a></li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <p>0 search results.</p>
+}
+
+
+<!--Modal Delete-->
+<div class="modal" tabindex="-1" role="dialog" id="modal-delete-ingredient">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Ingredient</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <span id="modal-delete-ingredient-name"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modal-delete-ingredient-confirm"><button type="button" class="btn btn-primary">Delete Ingredient</button></a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+
+    function confirmDeleteIngredient(ingredientId, name) {
+        $("#modal-delete-ingredient-name").html(name);
+        $("#modal-delete-ingredient-confirm").attr("href", "/manage/ingredients/delete/" + ingredientId);
+        $("#modal-delete-ingredient").modal("show");
+    }
+
+    $("#searchKeyword").keyup(function (event) {
+        if (event.keyCode === 13) {
+            searchTrigger();
+        }
+    });
+
+    function searchTrigger() {
+        window.location = "/manage/ingredients/index?pageIndex=1&keyword=" + $("#searchKeyword").val();
+    }
+</script>

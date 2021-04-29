@@ -1,0 +1,28 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Ingredients.EditViewModel
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<form method="post" action="~/manage/ingredients/edit">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="input a name" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" name="Quantity" value="@Model.Quantity" placeholder="input a quantity" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Unit Cost</label>
+        <input type="text" class="form-control" name="UnitCost" value="@Model.UnitCost" placeholder="input a unit cost" />
+    </div>
+    <div class="form-group">
+        <button type="submit" value="Edit" class="btn btn-success">Save</button>
+        <a href="~/manage/ingredients/index" class="btn btn-danger">Cancel</a>
+    </div>
+</form>
+

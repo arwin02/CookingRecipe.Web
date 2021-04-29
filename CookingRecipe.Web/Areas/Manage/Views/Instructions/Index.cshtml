@@ -1,0 +1,137 @@
+﻿@model CookingRecipe.Web.Areas.Manage.ViewModels.Instructions.IndexViewModel
+@using CookingRecipe.Web.Infrastructures.Domain.Models
+
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="input-group mb-3">
+            <input type="text" id="searchKeyword" placeholder="search ingredient" class="form-control" aria-label="search groups" aria-describedby="basic-addon2" value="@Model.Instructions.Keyword">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><a href="#" onclick="searchTrigger()"><i class="fas fa-search" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-lg-3">
+            <div class="table-responsive table--no-card m-b-30">
+                <a href="~/manage/ingredients/create" class="btn btn-lg btn-info btn-block"> <i class="fa fa-plus"></i>&nbsp; Create Ingredient</a>
+
+            </div>
+        </div>*@
+</div>
+
+
+
+@if (Model.Instructions.Items.Count > 0)
+{
+    <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+
+                <th>Step</th>
+                <th>Total Step</th>
+                <th>Time Cook</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Instruction instruction in Model.Instructions.Items)
+                {
+
+                        <tr>
+                          
+                            <td>@instruction.Step.Substring(0,30) <label>...</label><td>
+                            <td>@instruction.TotalStep</td>
+                            <td>@instruction.Time</td>
+
+                            <td>
+                                <a href="~/manage/instructions/details/@instruction.Id" title="Details Instruction"><button type="button" class="btn"><i class="fas fa-info"></i></button></a>
+                                <a href="~/manage/instructions/edit/@instruction.Id" title="Update Instruction"><button type="button" class="btn"><i class="fas fa-pen-square"></i></button></a>
+                                <a href="#" onclick="confirmDeleteInstruction('@instruction.Id', '@instruction.Step')" title="Delete Instruction"><button type="button" class="btn"><i class="fas fa-times"></i></button></a>
+
+                            </td>
+
+                        </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><span class="form-control-plaintext">Page&nbsp;&nbsp;&nbsp;</span></li>
+                            <li class="page-item"><input type="number" value="@Model.Instructions.PageIndex" class="form-control" style="width:50px;" onKeydown="javascript: if(event.keyCode == 13 && isNaN(parseInt($(this).val()))==false) window.location='/manage/instructions/index?pageIndex=' + (isNaN(parseInt($(this).val())) ? 1 : parseInt($(this).val()));" /></li>
+                            <li class="page-item"><span class="form-control-plaintext">&nbsp;&nbsp;&nbsp;of @Model.Instructions.PageCount&nbsp;&nbsp;&nbsp;</span></li>
+                            @{
+                                var prev = Model.Instructions.PageIndex - 1;
+                                if (prev > 0)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/instructions/index?keyword=@Model.Instructions.Keyword&pageSize=@Model.Instructions.PageSize&pageIndex=@prev"><span aria-hidden="true">&laquo;</span></a></li>
+                                }
+                            }
+                            <li class="page-item"><a class="page-link" href="#">@(Model.Instructions.PageIndex)</a></li>
+                            @{
+                                var next = Model.Instructions.PageIndex + 1;
+                                if (next <= Model.Instructions.PageCount)
+                                {
+                                    <li class="page-item"><a class="page-link" href="~/manage/instructions/index?keyword=@Model.Instructions.Keyword&pageSize=@Model.Instructions.PageSize&pageIndex=@next"><span aria-hidden="true">&raquo;</span></a></li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <p>0 search results.</p>
+}
+
+
+<!--Modal Delete-->
+<div class="modal" tabindex="-1" role="dialog" id="modal-delete-instruction">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Instruction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <span id="modal-delete-instruction-step"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modal-delete-instruction-confirm"><button type="button" class="btn btn-primary">Delete Instruction</button></a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function confirmDeleteInstruction(instructionId, step) {
+        $("#modal-delete-instruction-step").html(step);
+        $("#modal-delete-instruction-confirm").attr("href", "/manage/instructions/delete/" + instructionId);
+        $("#modal-delete-instruction").modal("show");
+    }
+
+    $("#searchKeyword").keyup(function (event) {
+        if (event.keyCode === 13) {
+            searchTrigger();
+        }
+    });
+
+    function searchTrigger() {
+        window.location = "/manage/instructions/index?pageIndex=1&keyword=" + $("#searchKeyword").val();
+    }
+</script>

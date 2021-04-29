@@ -1,0 +1,44 @@
+﻿@model CookingRecipe.Web.Infrastructures.Domain.Models.Ingredient
+@{
+    Layout = "~/areas/manage/views/shared/_manageLayout.cshtml";
+}
+
+<div class="section-title text-center">
+    <h2>Ingredients of @Model.Cooking.Name</h2>
+    <p></p>
+</div>
+
+
+
+<div>
+    <h4> Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+
+        <dt class="col-sm-2">
+            Quantity
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Quantity
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Unit Cost
+        </dt>
+        <dd class="col-sm-10">
+            @Model.UnitCost.ToString("F")
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a href="~/manage/ingredients/edit/@Model.Id" class="btn btn-primary" asp-route-id="@Model.Id">Edit</a>
+    <a href="~/manage/ingredients/index" class="btn btn-danger">Back to List</a>
+</div>

@@ -1,0 +1,41 @@
+﻿@model CookingRecipe.Web.ViewModels.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="text-center">
+    <h1>Login</h1>
+</div>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-8">
+            <form method="post" action="~/account/login">
+
+                <div class="form-group">
+                    <label for="EmailAddress" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" name="EmailAddress" placeholder="Enter a email address" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="Password" placeholder="Enter a password" />
+                </div>
+
+                <div class="text-center mb-4">
+                    <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+                    <a href="~/home" class="btn btn-lg btn-danger">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+</div>

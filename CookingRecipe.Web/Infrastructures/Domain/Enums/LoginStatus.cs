@@ -4,6 +4,7 @@
     {
         Active,
         InActive,
-
+        NeedToChangePassword,
+        AccountLocked
     }
 }

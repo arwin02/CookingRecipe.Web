@@ -24,6 +24,7 @@ namespace CookingRecipe.Web.Areas.Manage.Controllers
             if(user != null)
             {
                 WebUser.UserId = null;
+                WebUser.UserName = null;
             }
             return Redirect("~/home/index");
         }

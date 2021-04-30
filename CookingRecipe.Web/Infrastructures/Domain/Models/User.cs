@@ -4,10 +4,16 @@ namespace CookingRecipe.Web.Infrastructures.Domain.Models
 {
     public class User : BaseModel
     {
-
+        public User()
+        {
+            this.LoginStatus = LoginStatus.InActive;
+            this.FullName = FirstName + LastName;
+        }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string FullName { get; set; }
 
         public string Surname { get; set; }
 
@@ -23,5 +29,7 @@ namespace CookingRecipe.Web.Infrastructures.Domain.Models
         public LoginStatus LoginStatus { get; set; }
 
         public Gender Gender { get; set; }
+ 
+        public int LoginRetries { get; set; }
     }
 }

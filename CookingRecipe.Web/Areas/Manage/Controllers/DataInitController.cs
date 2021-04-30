@@ -20,6 +20,641 @@ namespace CookingRecipe.Web.Areas.Manage.Controllers
         public IActionResult DataInitializer()
         {
 
+            #region Users(15 Records)
+            if (this._context.Users.Count() < 1)
+            {
+
+                //1
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("24551e81-1887-4288-89f4-7d4d433120fa"),
+                            FirstName = "Cd",
+                            LastName = "Casupanan",
+                            FullName = "CD Casupanan",
+                            Surname = "cdbcasupanan",
+                            EmailAddress = "cdbcasupanan@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+                //2
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("62fb0427-e259-4874-b904-5f5d4d6c4b9e"),
+                            FirstName = "Xyrille",
+                            LastName = "Mamalateo",
+                            FullName = "Xyrille Mamalateo",
+                            Surname = "XyAnn",
+                            EmailAddress = "Xyrille@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+                //3
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("1e5a951c-ae94-42dd-b01b-62460c556408"),
+                            FirstName = "Joy",
+                            LastName = "Flores",
+                            FullName = "Joy Flores",
+                            Surname = "JoyJoy",
+                            EmailAddress = "Joy@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+                //4
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("7f5c0d24-0d38-48b4-a5b7-bd6b5e3bbe22"),
+                            FirstName = "Arwin",
+                            LastName = "Tolentino",
+                            FullName = "Arwin Tolentino",
+                            Surname = "Arwin02",
+                            EmailAddress = "Arwin@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+                //5
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("385fd1f1-82a6-4eb8-826f-89d8873bcdb1"),
+                            FirstName = "Allan",
+                            LastName = "Chavez",
+                            FullName = "Allan Chavez",
+                            Surname = "Allan",
+                            EmailAddress = "Allan@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                           
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //6
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("a09573f5-62b9-4548-b153-4d2eac8ef29e"),
+                            FirstName = "Luisa",
+                            LastName = "Reyes",
+                            FullName = "Luisa Kathrina Reyes",
+                            Surname = "LuisaKath",
+                            EmailAddress = "Luisa@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                          
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //7
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("984797ad-c1c8-4d36-a527-80e41dd6592e"),
+                            FirstName = "Larich",
+                            LastName = "Morales",
+                            FullName = "Larich Morales",
+                            Surname = "Larich01",
+                            EmailAddress = "larich@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                           
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //8
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("e5037a48-8f1e-4811-8d51-72cef2238ce3"),
+                            FirstName = "Jane",
+                            LastName = "Ticar",
+                            FullName = "Jane Ticar",
+                            Surname = "Jane02",
+                            EmailAddress = "jane@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                         
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //9
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("f178c3cb-db20-436d-a2e2-36d34772dba8"),
+                            FirstName = "Wesley",
+                            LastName = "SA",
+                            FullName = "Wesley SA",
+                            Surname = "Wesley03",
+                            EmailAddress = "Wesley@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                           
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //10
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("e358f015-6a5f-4a20-8718-513a23fef0fd"),
+                            FirstName = "Reniel ",
+                            LastName = "David",
+                            FullName = "Reniel David",
+                            Surname = "Reniel04",
+                            EmailAddress = "Reniel@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                           
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //11
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("b36f7f45-1b05-4905-9a66-8183809ff8c8"),
+                            FirstName = "Jhon Cedric",
+                            LastName = "Romano",
+                            FullName = "Jhon Cedric Romano",
+                            Surname = "Jhon06",
+                            EmailAddress = "Jhon@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //12
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("41494e0e-cde7-46de-897c-a8369fba5ba9"),
+                            FirstName = "Elmo",
+                            LastName = "Cahilo",
+                            FullName = "Elmo Cahilo",
+                            Surname = "Elmo07",
+                            EmailAddress = "Elmo@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                          
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //13
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("83349c71-bbe2-4c2d-a9a5-3d555a00305c"),
+                            FirstName = "Jake Renzo",
+                            LastName = "Carlos",
+                            FullName = "Jake Renzo Carlos",
+                            Surname = "Jake08",
+                            EmailAddress = "Jake@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                         
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //14
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("634e0321-5f02-458b-a2b8-7bd07bc86672"),
+                            FirstName = "Christian",
+                            LastName = "Cruz",
+                            FullName = "Christian Cruz",
+                            Surname = "Christian09",
+                            EmailAddress = "Christian@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Male,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+
+
+                //15
+                this._context.Users.Add(
+                        new Infrastructures.Domain.Models.User()
+                        {
+
+                            Id = Guid.Parse("9c304fab-d362-483c-be13-885381731ba8"),
+                            FirstName = "MAMA",
+                            LastName = "KO",
+                            FullName = "MAMA KO",
+                            Surname = "MAMA00",
+                            EmailAddress = "mama@gmail.com",
+                            Password = "123456789",
+                            PhoneNumber = "123456789",
+                            
+                            LoginRetries = 0,
+                            Gender = Infrastructures.Domain.Enums.Gender.Female,
+                            LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active,
+                            Address = "Dinalupihan",
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+
+
+
+
+                        });
+            }
+            #endregion
+
+            #region UserRole(15 Records)
+            if (this._context.UserRoles.Count() < 1)
+            {
+
+                //1
+                this._context.UserRoles.Add(
+                        new Infrastructures.Domain.Models.UserRole()
+                        {
+
+                            Id = Guid.Parse("880e8918-8e8f-488b-9ffc-bd06285881dc"),
+                            UserId = Guid.Parse("24551e81-1887-4288-89f4-7d4d433120fa"),
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+                            Role = Infrastructures.Domain.Enums.Role.User
+                        });
+
+                //2
+                this._context.UserRoles.Add(
+                        new Infrastructures.Domain.Models.UserRole()
+                        {
+
+
+                            Id = Guid.Parse("f5cd2ec2-8f70-4c06-917b-188a245e61ff"),
+                            UserId = Guid.Parse("62fb0427-e259-4874-b904-5f5d4d6c4b9e"),
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+                            Role = Infrastructures.Domain.Enums.Role.User
+
+
+
+
+                        });
+
+                //3
+             
+                this._context.UserRoles.Add(
+                        new Infrastructures.Domain.Models.UserRole()
+                        {
+
+                            Id = Guid.Parse("8436f69d-200e-4ef9-81bd-46038f11d644"),
+                            UserId = Guid.Parse("1e5a951c-ae94-42dd-b01b-62460c556408"),
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+                            Role = Infrastructures.Domain.Enums.Role.User
+
+                        });
+
+                //4
+                this._context.UserRoles.Add(
+                         new Infrastructures.Domain.Models.UserRole()
+                         {
+
+
+                             Id = Guid.Parse("87abcfc2-60f1-4632-9e06-bc363d57b88b"),
+                             UserId = Guid.Parse("7f5c0d24-0d38-48b4-a5b7-bd6b5e3bbe22"),
+                             CreatedAt = DateTime.UtcNow,
+                             UpdatedAt = DateTime.UtcNow,
+                             Role = Infrastructures.Domain.Enums.Role.User
+
+                         });
+
+                //5
+                this._context.UserRoles.Add(
+                         new Infrastructures.Domain.Models.UserRole()
+                         {
+
+
+                             Id = Guid.Parse("9cc6bada-f43f-47e2-b8e6-462f97f0a9ed"),
+                             UserId = Guid.Parse("385fd1f1-82a6-4eb8-826f-89d8873bcdb1"),
+                             CreatedAt = DateTime.UtcNow,
+                             UpdatedAt = DateTime.UtcNow,
+                             Role = Infrastructures.Domain.Enums.Role.User
+
+                         });
+
+
+                //6
+                this._context.UserRoles.Add(
+                         new Infrastructures.Domain.Models.UserRole()
+                         {
+
+                             Id = Guid.Parse("bd436a4b-dac7-43c7-bd5d-1a434da9a99c"),
+                             UserId = Guid.Parse("a09573f5-62b9-4548-b153-4d2eac8ef29e"),
+                             CreatedAt = DateTime.UtcNow,
+                             UpdatedAt = DateTime.UtcNow,
+                             Role = Infrastructures.Domain.Enums.Role.User
+
+                         });
+
+
+                //7
+                this._context.UserRoles.Add(
+                         new Infrastructures.Domain.Models.UserRole()
+                         {
+
+
+
+
+
+                             Id = Guid.Parse("ec54e10c-21eb-4509-8d13-23edcc6b494d"),
+                             UserId = Guid.Parse("984797ad-c1c8-4d36-a527-80e41dd6592e"),
+                             CreatedAt = DateTime.UtcNow,
+                             UpdatedAt = DateTime.UtcNow,
+                             Role = Infrastructures.Domain.Enums.Role.User
+
+
+                         });
+
+
+                //8
+                this._context.UserRoles.Add(
+                        new Infrastructures.Domain.Models.UserRole()
+                        {
+
+
+
+                            Id = Guid.Parse("82400738-a126-4341-a8bc-dd38409174d8"),
+                            UserId = Guid.Parse("e5037a48-8f1e-4811-8d51-72cef2238ce3"),
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow,
+                            Role = Infrastructures.Domain.Enums.Role.User
+                        });
+
+
+                //9
+                this._context.UserRoles.Add(
+                      new Infrastructures.Domain.Models.UserRole()
+                      {
+
+
+
+                          Id = Guid.Parse("b95ac303-abac-43cd-801d-02bd480c231b"),
+                          UserId = Guid.Parse("f178c3cb-db20-436d-a2e2-36d34772dba8"),
+                          CreatedAt = DateTime.UtcNow,
+                          UpdatedAt = DateTime.UtcNow,
+                          Role = Infrastructures.Domain.Enums.Role.User
+
+
+                      });
+
+
+                //10
+                this._context.UserRoles.Add(
+                     new Infrastructures.Domain.Models.UserRole()
+                     {
+
+                         Id = Guid.Parse("f72a76a3-bd79-4c36-a454-2dfc8077cdc1"),
+                         UserId = Guid.Parse("e358f015-6a5f-4a20-8718-513a23fef0fd"),
+                         CreatedAt = DateTime.UtcNow,
+                         UpdatedAt = DateTime.UtcNow,
+                         Role = Infrastructures.Domain.Enums.Role.User
+
+                     });
+
+
+                //11
+                this._context.UserRoles.Add(
+                   new Infrastructures.Domain.Models.UserRole()
+                   {
+
+                       Id = Guid.Parse("5acf73f4-d64e-4a58-9762-f42067d43fa6"),
+                       UserId = Guid.Parse("b36f7f45-1b05-4905-9a66-8183809ff8c8"),
+                       CreatedAt = DateTime.UtcNow,
+                       UpdatedAt = DateTime.UtcNow,
+                       Role = Infrastructures.Domain.Enums.Role.User
+
+                   });
+
+
+                //12
+                this._context.UserRoles.Add(
+                   new Infrastructures.Domain.Models.UserRole()
+                   {
+
+                       Id = Guid.Parse("3ec2072d-af85-41e4-a69e-48068d0ba8b0"),
+                       UserId = Guid.Parse("41494e0e-cde7-46de-897c-a8369fba5ba9"),
+                       CreatedAt = DateTime.UtcNow,
+                       UpdatedAt = DateTime.UtcNow,
+                       Role = Infrastructures.Domain.Enums.Role.User
+
+
+                   });
+
+
+                //13
+                this._context.UserRoles.Add(
+                    new Infrastructures.Domain.Models.UserRole()
+                    {
+
+
+                        Id = Guid.Parse("5d56eb33-d5d2-4bdc-9a06-7e07f1b32f30"),
+                        UserId = Guid.Parse("83349c71-bbe2-4c2d-a9a5-3d555a00305c"),
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow,
+                        Role = Infrastructures.Domain.Enums.Role.User
+
+
+
+                    });
+
+
+                //14
+                this._context.UserRoles.Add(
+                    new Infrastructures.Domain.Models.UserRole()
+                    {
+
+
+
+                        Id = Guid.Parse("dc49b9f8-254d-4bca-82db-a4aff22287c8"),
+                        UserId = Guid.Parse("634e0321-5f02-458b-a2b8-7bd07bc86672"),
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow,
+                        Role = Infrastructures.Domain.Enums.Role.User
+
+                    });
+
+
+                //15
+                this._context.UserRoles.Add(
+                    new Infrastructures.Domain.Models.UserRole()
+                    {
+
+
+                        Id = Guid.Parse("faf2ed2d-370e-48cc-aa57-cdee56d72fdb"),
+                        UserId = Guid.Parse("9c304fab-d362-483c-be13-885381731ba8"),
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow,
+                        Role = Infrastructures.Domain.Enums.Role.User
+                    });
+            }
+            #endregion
+
             #region Cooking(15 Records)
             if (this._context.Cookings.Count() < 1)
             {

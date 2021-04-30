@@ -9,9 +9,13 @@ namespace CookingRecipe.Web.Infrastructures.Domain.Helpers
     {
         public static Guid? UserId { get; set; }
 
-        public static void GetUser(Guid? Id)
+        public static string UserName { get; set; }
+
+        public static void GetUser(Guid? Id, string userName)
         {
+                    
             UserId = Id;
+            UserName = userName;
         }
 
     }

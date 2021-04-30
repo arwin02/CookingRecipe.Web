@@ -94,31 +94,72 @@ namespace CookingRecipe.Web.Controllers
                 ModelState.AddModelError("", "Email & Password cannot be empty! Please valid your account");
                 return View(model);
             }
-          
 
-            var user = this._context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress && u.Password == model.Password);
-            
+
+            var user = this._context.Users.FirstOrDefault(u => u.EmailAddress == model.EmailAddress);
+
 
             if (user != null)
             {
                 var userRole = this._context.UserRoles.FirstOrDefault(ur => ur.UserId == user.Id);
-
-                if (userRole.Role == Infrastructures.Domain.Enums.Role.User && user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.Active)
+                if (user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.InActive)
                 {
-                    user.LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active;
-                    WebUser.GetUser(user.Id);
+
+                    ModelState.AddModelError("", "Your account is In-active. Please verify your account.");
+                    return View(model);
+                }
+                else if (user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.AccountLocked)
+                {
+                    ModelState.AddModelError("", "Your account has been locked!");
+                    return View(model);
+                }
+                else if (user.LoginRetries == 3 && user.Password != model.Password)
+                {
+                    user.LoginRetries = user.LoginRetries + 1;
+                    user.LoginStatus = Infrastructures.Domain.Enums.LoginStatus.AccountLocked;
                     this._context.Users.Update(user);
                     this._context.SaveChanges();
+
+                    ModelState.AddModelError("", "Your login is failed 4 times. Your account has been locked!.");
+                    return View(model);
                 }
 
-                return Redirect("~/manage/cookings/index");
+                else if (user.LoginRetries == 3 && user.Password == model.Password)
+                {
+                    user.LoginStatus = Infrastructures.Domain.Enums.LoginStatus.NeedToChangePassword;
+                    this._context.Users.Update(user);
+                    this._context.SaveChanges();
+
+                    ModelState.AddModelError("", "Your login is failed more than " + user.LoginRetries + " times. your account need to change password if you failed one more the account has been locked!.");
+                    return View(model);
+                }
+
+                else if (user.Password != model.Password)
+                {
+
+                    user.LoginRetries = user.LoginRetries + 1;
+                    this._context.Users.Update(user);
+                    this._context.SaveChanges();
+
+
+                    ModelState.AddModelError("", "Invalid password. Login failed :" + user.LoginRetries);
+                    return View(model);
+                }
+                else if (userRole.Role == Infrastructures.Domain.Enums.Role.User && user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.Active && user.Password == model.Password)
+                {
+                    user.LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active;
+                    user.LoginRetries = 0;
+                    WebUser.GetUser(user.Id, user.Surname);
+                    this._context.Users.Update(user);
+                    this._context.SaveChanges();
+
+                    return Redirect("~/manage/authors/index");
+                }
+
+                
             }
-            else
-            {
-                ModelState.AddModelError("", "Invalid Email and password. Please create your account first");
-                return View(model);
-            }
-              
+
+            return View(model);
         }
     }
 }

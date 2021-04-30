@@ -123,11 +123,17 @@ namespace CookingRecipe.Web.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("LoginRetries")
+                        .HasColumnType("int");
 
                     b.Property<int>("LoginStatus")
                         .HasColumnType("int");

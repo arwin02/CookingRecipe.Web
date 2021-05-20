@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VGD PC 9\\source\\repos\\CookingRecipe\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {}
+    "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VGD PC 9\\source\\repos\\CookingRecipe\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {
+    "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VGD PC 9\\source\\repos\\CookingRecipe\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
+        "projectUniqueName": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
         "projectName": "CookingRecipe.Web",
-        "projectPath": "C:\\Users\\VGD PC 9\\source\\repos\\CookingRecipe\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
+        "projectPath": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
         "packagesPath": "C:\\Users\\VGD PC 9\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VGD PC 9\\source\\repos\\CookingRecipe\\CookingRecipe.Web\\obj\\",
+        "outputPath": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BCrypt-Core": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.1, )"

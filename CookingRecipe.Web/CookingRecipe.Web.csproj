@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210430065034_init.cs" />
+    <Compile Remove="Migrations\20210430065034_init.Designer.cs" />
+    <Compile Remove="Migrations\20210525024949_init.cs" />
+    <Compile Remove="Migrations\20210525024949_init.Designer.cs" />
+    <Compile Remove="Migrations\20210525041724_init.cs" />
+    <Compile Remove="Migrations\20210525041724_init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Manage\Data\" />
   </ItemGroup>
 

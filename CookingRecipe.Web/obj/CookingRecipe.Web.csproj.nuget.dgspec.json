@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {}
+    "C:\\Users\\admin\\OneDrive\\Documents\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {
+    "C:\\Users\\admin\\OneDrive\\Documents\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\OneDrive\\Documents\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
         "projectName": "CookingRecipe.Web",
-        "projectPath": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
-        "packagesPath": "C:\\Users\\VGD PC 9\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VGD PC 9\\Videos\\WEBAPPS\\CookingRecipe.Web\\CookingRecipe.Web\\obj\\",
+        "projectPath": "C:\\Users\\admin\\OneDrive\\Documents\\CookingRecipe.Web\\CookingRecipe.Web\\CookingRecipe.Web.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\OneDrive\\Documents\\CookingRecipe.Web\\CookingRecipe.Web\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\VGD PC 9\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -31,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "BCrypt-Core": {
               "target": "Package",
@@ -94,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

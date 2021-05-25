@@ -133,11 +133,11 @@ namespace CookingRecipe.Web.Controllers
                         this._context.Users.Update(user);
                         this._context.SaveChanges();
 
-                        ModelState.AddModelError("", "Your login is failed more than " + user.LoginRetries + " times. your account need to change password if you failed one more the account has been locked!.");
+                        ModelState.AddModelError("", "Your login has failed more than " + user.LoginRetries + " times. your account need to change password if you failed one more the account has been locked!.");
                         return View(model);
                     }
 
-                    else if (user.Password != model.Password)
+                    else if (!BCryptHelper.CheckPassword(model.Password, user.Password))
                     {
 
                         user.LoginRetries = user.LoginRetries + 1;
@@ -148,7 +148,7 @@ namespace CookingRecipe.Web.Controllers
                         ModelState.AddModelError("", "Invalid password. Login failed :" + user.LoginRetries);
                         return View(model);
                     }
-                    else if (userRole.Role == Infrastructures.Domain.Enums.Role.User && user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.Active && user.Password == model.Password)
+                    else if (userRole.Role == Infrastructures.Domain.Enums.Role.User && user.LoginStatus == Infrastructures.Domain.Enums.LoginStatus.Active)
                     {
                         user.LoginStatus = Infrastructures.Domain.Enums.LoginStatus.Active;
                         user.LoginRetries = 0;
@@ -156,7 +156,7 @@ namespace CookingRecipe.Web.Controllers
                         this._context.Users.Update(user);
                         this._context.SaveChanges();
 
-                        return Redirect("~/manage/authors/index");
+                        return Redirect("../");
                     }
 
                 }

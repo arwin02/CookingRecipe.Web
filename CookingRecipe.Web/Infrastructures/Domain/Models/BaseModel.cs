@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CookingRecipe.Web.Infrastructures.Domain.Models
 {
@@ -11,6 +12,7 @@ namespace CookingRecipe.Web.Infrastructures.Domain.Models
 
         }
 
+        [Key]
         public Guid? Id { get; set; }
 
         public DateTime CreatedAt { get; set; }

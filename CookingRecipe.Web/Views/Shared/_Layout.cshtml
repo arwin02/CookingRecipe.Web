@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using CookingRecipe.Web.Infrastructures.Domain.Helpers;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,20 +19,36 @@
 
                 <li><a href="~/home" class="nav-link px-2 link-secondary">Home</a></li>
                 @*<li><a href="~/manage/cookings/index" class="nav-link px-2 link-dark">Cook</a></li>
-                <li><a href="~/manage/ingredients/index" class="nav-link px-2 link-dark">Ingredient</a></li>
-                <li><a href="~/manage/instructions/index" class="nav-link px-2 link-dark">Instruction</a></li>*@
+            <li><a href="~/manage/ingredients/index" class="nav-link px-2 link-dark">Ingredient</a></li>
+            <li><a href="~/manage/instructions/index" class="nav-link px-2 link-dark">Instruction</a></li>*@
             </ul>
-
             <div class="col-md-3 text-end">
-                <a href="~/account/login">
-                    <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                </a>
-                
-                <a href="~/account/register">
-                    <button type="button" class="btn btn-primary">Sign-up</button>
-               </a>
+                @{
+                    var user = WebUser.UserName;
+
+
+
+                    if (user == null)
+                    {
+                        <a href="~/account/login">
+                            <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                        </a>
+                    }
+
+                    if (user != null)
+                    {
+                        <a href="~/">
+                            <button type="button" class="btn btn-outline-primary me-2">@user</button>
+                        </a>
+                    }
+
+                    <a href="~/">
+                        <button type="button" class="btn btn-primary">Sign-up</button>
+                    </a>
+
+                }
             </div>
-        </header>
+            </header>
     </div>
 
     <div class="container">
